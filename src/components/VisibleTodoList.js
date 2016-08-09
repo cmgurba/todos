@@ -27,6 +27,8 @@ class VisibleTodoList extends Component {
     if (isFetching && !todos.length) {
       return <p>Loading...</p>;
     }
+    // handle failed requests.  have to check for !todos.length or
+    // we would just pull the cached todos if it exists.
     if (errorMessage && !todos.length) {
       return (
         <FetchError
@@ -54,8 +56,12 @@ VisibleTodoList.propTypes = {
   toggleTodo: PropTypes.func.isRequired,
 };
 
+// reminder : this map is how the state of "Todos"
+// as well as other stuff gets attached to the props of
+// visible todo list using connect!
 const mapStateToProps = (state, { params }) => {
   const filter = params.filter || 'all';
+  // add extra prop for errors here.
   return {
     isFetching: getIsFetching(state, filter),
     errorMessage: getErrorMessage(state, filter),

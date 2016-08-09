@@ -27,11 +27,30 @@ const createList = (filter) => {
         return state;
     }
   };
-
+  // new reducer logic.
+  // a reducer can't have undefined initial state,
+  // but it can have null.  Make its absence explicit,
+  // always give a default state value!
+  //remember this is a sub-function, "filter" refers
+  // to filter passed into createList above.
   const errorMessage = (state = null, action) => {
     if (filter !== action.filter) {
       return state;
     }
+    // handle error if failure, otherwise return null.
+    // null will clear the error message.  Why? :
+    // this is because getErrorMessage is passed to
+    // mapStateToProps through our reducer hierarchy:
+    // 1. named export selector below (pulls errorMessage
+    // from here).  
+    // 2. Then our wrapper selector in reducers/index.js.
+    // 3. Then import in VisibleTodoList
+    //    component and pass into mapStateToProps.
+    // 4.  This will put it on props, so when it's destructured
+    //     in VisibleTodoList's Render, it won't pass the
+    //     conditional in charge of displaying the error message
+    //     and retry button.
+    // ;O
     switch (action.type) {
       case 'FETCH_TODOS_FAILURE':
         return action.message;

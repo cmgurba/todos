@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-
+// onRetry is our function to retry the request.
+// used in visibletodolist
 const FetchError = ({ message, onRetry }) => (
   <div>
     <p>Could not fetch todos. {message}</p>

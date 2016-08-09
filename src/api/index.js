@@ -24,6 +24,7 @@ const delay = (ms) =>
 
 export const fetchTodos = (filter) =>
   delay(500).then(() => {
+    // simulate a random error happening on api call.
     if (Math.random() > 0.5) {
       throw new Error('Boom!');
     }
