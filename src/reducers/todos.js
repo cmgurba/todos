@@ -28,11 +28,21 @@ const todos = combineReducers({
   allIds,
 });
 
+// Dan's pattern : default export is the main reducer.
+// named export functions starting with "get" are functions
+// that select something from state to be displayed to the
+// ui based on logic.  Commonly called "selectors"
 export default todos;
 
 const getAllTodos = (state) =>
   state.allIds.map(id => state.byId[id]);
 
+
+// colocate selectors with reducers.  Selectors depend
+// on the state structure, and reducers are the source of
+// truth for state structure.  If it changes, colocating
+// selectors w/ reducers can help make sure updates are
+// done accordingly.  
 export const getVisibleTodos = (state, filter) => {
   const allTodos = getAllTodos(state);
   switch (filter) {
