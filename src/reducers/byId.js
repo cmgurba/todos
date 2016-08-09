@@ -1,3 +1,4 @@
+// extract out byId to its own file.  
 const byId = (state = {}, action) => {
   switch (action.type) {
     case 'RECEIVE_TODOS': // eslint-disable-line no-case-declarations

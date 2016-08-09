@@ -1,3 +1,5 @@
+// new function : basically allIds from the previous iterations
+// of reducers
 const createList = (filter) => { // eslint-disable-line arrow-body-style
   return (state = [], action) => {
     if (action.filter !== filter) {
