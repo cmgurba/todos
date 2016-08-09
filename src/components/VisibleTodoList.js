@@ -14,7 +14,7 @@ const getVisibleTodos = (todos, filter) => {
       throw new Error(`Unknown filter: ${filter}.`);
   }
 };
-
+// pass ownProps from APP, so we can get /(:filter) router param
 const mapStateToProps = (state, ownProps) => ({
   todos: getVisibleTodos(
     state.todos,
