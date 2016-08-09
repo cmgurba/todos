@@ -18,10 +18,10 @@ const fakeDatabase = {
     completed: false,
   }],
 };
-
 const delay = (ms) =>
   new Promise(resolve => setTimeout(resolve, ms));
 
+// fake api waits, then returns once promise resolves
 export const fetchTodos = (filter) =>
   delay(500).then(() => {
     switch (filter) {
