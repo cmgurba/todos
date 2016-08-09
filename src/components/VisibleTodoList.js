@@ -5,6 +5,7 @@ import TodoList from './TodoList';
 
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
+    // filter now takes from App's passed down :filter prop
     case 'all':
       return todos;
     case 'completed':
