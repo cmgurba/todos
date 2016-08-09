@@ -7,7 +7,13 @@ const createList = (filter) => {
         return filter === action.filter ?
           action.response.map(todo => todo.id) :
           state;
+      // add logic for newly added todo.  This way
+      // the state is immediately updated when a new todo is
+      // added, it doesn't have to wait for a fetch.
+      // (fetch is called on a fresh reload or a toggle filter)
       case 'ADD_TODO_SUCCESS':
+        // alwys add the new todo unless filter is completed
+        // brand new todo wont be completed.
         return filter !== 'completed' ?
           [...state, action.response.id] :
           state;

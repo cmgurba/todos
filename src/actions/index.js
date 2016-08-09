@@ -28,7 +28,8 @@ export const fetchTodos = (filter) => (dispatch, getState) => {
     }
   );
 };
-
+// change to be a thunk action creator, add dispatch as curried argument
+// wait for api response, then dispatch success
 export const addTodo = (text) => (dispatch) =>
   api.addTodo(text).then(response => {
     dispatch({
