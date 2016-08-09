@@ -1,3 +1,4 @@
+// exported base todo reducer so we don't clutter ./todos.js too much
 const todo = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
