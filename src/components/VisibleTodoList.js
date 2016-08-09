@@ -18,12 +18,17 @@ class VisibleTodoList extends Component {
 
   fetchData() {
     const { filter, fetchTodos, requestTodos } = this.props;
+    // we call our new action creator to flag this as an
+    // api call.  These two dispatched actions will let the store
+    // (and components) know that first we're fetching data (display
+    // loading tag below IF there also aren't any 'cached' todos in props
     requestTodos(filter);
     fetchTodos(filter);
   }
-
+  // loading indicator for api waits.
   render() {
     const { isFetching, toggleTodo, todos } = this.props;
+    // second conditional ensures we don't have cached todos.
     if (isFetching && !todos.length) {
       return <p>Loading...</p>;
     }

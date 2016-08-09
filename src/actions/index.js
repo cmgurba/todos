@@ -1,6 +1,7 @@
 import { v4 } from 'node-uuid';
 import * as api from '../api';
 
+// new action creator for request todos
 export const requestTodos = (filter) => ({
   type: 'REQUEST_TODOS',
   filter,

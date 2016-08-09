@@ -26,7 +26,7 @@ const createList = (filter) => { // eslint-disable-line arrow-body-style
         return state;
     }
   };
-
+  // combine ids and isFetching as the createList reducer
   return combineReducers({
     ids,
     isFetching,
@@ -34,6 +34,6 @@ const createList = (filter) => { // eslint-disable-line arrow-body-style
 };
 
 export default createList;
-
+// new reducer needs to keep track of both of these fields
 export const getIds = (state) => state.ids;
 export const getIsFetching = state => state.isFetching;
