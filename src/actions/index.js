@@ -12,9 +12,19 @@ const receiveTodos = (filter, response) => ({
   filter,
   response,
 });
-
+// this function is now utilizing redux-thunk through its declaration
+// in configureStore where we add middleware.
+// look at redux-thunk docs or contineu to use redux-sagas if better..
+// the signature here is common for a function that uses thunk middleware
 export const fetchTodos = (filter) => (dispatch, getState) => {
+  // avoid race condition : if we're already fetching, don't allow
+  // another dispatched similar request + fetch todos until the 
+  // first one is done fetching.
   if (getIsFetching(getState(), filter)) {
+    // return an immediately resolved promise so
+    // the return value of this function remains consistent.
+    // (we return an api.fetchTodos.then() with our .then()
+    // callback below)
     return Promise.resolve();
   }
 

@@ -19,6 +19,11 @@ class VisibleTodoList extends Component {
   fetchData() {
     const { filter, fetchTodos } = this.props;
     fetchTodos(filter);
+    // this returns a promise now that we refactored it and use
+    // redux-thunk middleware.
+    // we could wait for it to complete to display an animation, or 
+    // log or do something reactive aka:
+    // fetchTodos(filter).then(() => console.log('done fetching yay!'));
   }
 
   render() {
