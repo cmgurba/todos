@@ -1,4 +1,5 @@
 import { normalize } from 'normalizr';
+// import our normalizr schemas
 import * as schema from './schema';
 import * as api from '../api';
 import { getIsFetching } from '../reducers';
@@ -12,7 +13,7 @@ export const fetchTodos = (filter) => (dispatch, getState) => {
     type: 'FETCH_TODOS_REQUEST',
     filter,
   });
-
+  // normalize can be called with a response, and a schema item.
   return api.fetchTodos(filter).then(
     response => {
       dispatch({
