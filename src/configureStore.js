@@ -1,6 +1,8 @@
 import { createStore } from 'redux';
 import todoApp from './reducers';
 
+// wraps dispatch from redux, logs to console,
+// then dispatches.
 const addLoggingToDispatch = (store) => {
   /* eslint-disable no-console */
   const rawDispatch = store.dispatch;
@@ -22,7 +24,7 @@ const addLoggingToDispatch = (store) => {
 
 const configureStore = () => {
   const store = createStore(todoApp);
-
+  // don't log this stuff in production
   if (process.env.NODE_ENV !== 'production') {
     store.dispatch = addLoggingToDispatch(store);
   }
