@@ -12,6 +12,8 @@ const receiveTodos = (filter, response) => ({
   response,
 });
 
+// functions returned from other functions are often called
+// thunks.  TIL.
 export const fetchTodos = (filter) => (dispatch) => {
   dispatch(requestTodos(filter));
 
