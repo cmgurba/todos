@@ -38,7 +38,10 @@ export const addTodo = (text) => (dispatch) =>
       response: normalize(response, schema.todo),
     });
   });
-
+// switch this to a thunk action creator with a dispatch callback.
+// if we toggled a todo then we'll get the response and 
+// immediately dispatch a toggle success action, so we can
+// update our filtering without delay.
 export const toggleTodo = (id) => (dispatch) =>
   api.toggleTodo(id).then(response => {
     dispatch({

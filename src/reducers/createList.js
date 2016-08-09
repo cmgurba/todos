@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
 
 const createList = (filter) => {
+  // make sure we immediately handle toggled items.
+  // shouldremove will be true if we are on the active
+  // tab and it IS completed, or vice versa.
+  // 
   const handleToggle = (state, action) => {
     const { result: toggledId, entities } = action.response;
     const { completed } = entities.todos[toggledId];
